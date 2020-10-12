@@ -19,12 +19,25 @@ class API_WEATHER{
 
   // Faire la requete à l'API openweathermap
   // Retourne une promise
-  fetchTodayForecast(){
+  fetchTodayForecast()
+  {
     return axios
-    .get(`${API_URL}?q=${this.city}&units=metric&appid=${API_KEY}`, {
+    .get(`${API_URL}?q=${this.city}&units=metric&appid=${API_KEY}`, 
+    {
       crossdomain: true
     })
   }
+
+  fetchThreeDayForecast()
+  {
+    return axios
+    .get(`${API_URL1}?q=${this.city}&units=metric&cnt=4&appid=${API_KEY}`,
+    {
+      crossdomain: true
+    })
+  }
+    
+    
   // Retourne l'element HTML de l'icon symbolisant la méteo.
   getHTMLElementFromIcon(icon){
     return `<img src=${API_URL_ICON}${icon}@2x.png class="weather-icon"/>`
